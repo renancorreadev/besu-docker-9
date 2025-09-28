@@ -1,0 +1,219 @@
+
+services:
+  # Bootnode 1 - vmazupraplx7962
+  vmazupraplx7962:
+    build:
+      context: ./setup/vmazupraplx7962
+      dockerfile: Dockerfile
+    container_name: vmazupraplx7962
+    hostname: vmazupraplx7962
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.82
+    ports:
+      - "8545:8545"   # RPC HTTP
+      - "30303:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx7962/config:/opt/besu/config
+      - ./setup/vmazupraplx7962/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.82
+      - NODE_TYPE=bootnode
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+
+  # Validador 1 - vmazupraplx2694
+  vmazupraplx2694:
+    build:
+      context: ./setup/vmazupraplx2694
+      dockerfile: Dockerfile
+    container_name: vmazupraplx2694
+    hostname: vmazupraplx2694
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.98
+    ports:
+      - "8546:8545"   # RPC HTTP
+      - "30304:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx2694/config:/opt/besu/config
+      - ./setup/vmazupraplx2694/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.98
+      - NODE_TYPE=validator
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+    depends_on:
+      - vmazupraplx7962
+
+  # Validador 2 - vmazupraplx9942
+  vmazupraplx9942:
+    build:
+      context: ./setup/vmazupraplx9942
+      dockerfile: Dockerfile
+    container_name: vmazupraplx9942
+    hostname: vmazupraplx9942
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.101
+    ports:
+      - "8547:8545"   # RPC HTTP
+      - "30305:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx9942/config:/opt/besu/config
+      - ./setup/vmazupraplx9942/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.101
+      - NODE_TYPE=validator
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+    depends_on:
+      - vmazupraplx7962
+
+  # Bootnode 2 - vmazupraplx9278
+  vmazupraplx9278:
+    build:
+      context: ./setup/vmazupraplx9278
+      dockerfile: Dockerfile
+    container_name: vmazupraplx9278
+    hostname: vmazupraplx9278
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.99
+    ports:
+      - "8548:8545"   # RPC HTTP
+      - "30306:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx9278/config:/opt/besu/config
+      - ./setup/vmazupraplx9278/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.99
+      - NODE_TYPE=bootnode
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+
+  # Validador 1 z2 - vmazupraplx4002
+  vmazupraplx4002:
+    build:
+      context: ./setup/vmazupraplx4002
+      dockerfile: Dockerfile
+    container_name: vmazupraplx4002
+    hostname: vmazupraplx4002
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.104
+    ports:
+      - "8549:8545"   # RPC HTTP
+      - "30307:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx4002/config:/opt/besu/config
+      - ./setup/vmazupraplx4002/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.104
+      - NODE_TYPE=validator
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+    depends_on:
+      - vmazupraplx9278
+
+  # Validador 2 z2 - vmazupraplx8934
+  vmazupraplx8934:
+    build:
+      context: ./setup/vmazupraplx8934
+      dockerfile: Dockerfile
+    container_name: vmazupraplx8934
+    hostname: vmazupraplx8934
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.110
+    ports:
+      - "8550:8545"   # RPC HTTP
+      - "30308:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx8934/config:/opt/besu/config
+      - ./setup/vmazupraplx8934/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.25.206.4
+      - NODE_TYPE=validator
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+    depends_on:
+      - vmazupraplx9278
+
+  # Bootnode 3 - vmazuprapix4156
+  vmazuprapix4156:
+    build:
+      context: ./setup/vmazuprapix4156
+      dockerfile: Dockerfile
+    container_name: vmazuprapix4156
+    hostname: vmazuprapix4156
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.105
+    ports:
+      - "8551:8545"   # RPC HTTP
+      - "30309:30303" # P2P
+    volumes:
+      - ./setup/vmazuprapix4156/config:/opt/besu/config
+      - ./setup/vmazuprapix4156/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.105
+      - NODE_TYPE=bootnode
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+
+  # Validador 1 - vmazupraplx6452
+  vmazupraplx6452:
+    build:
+      context: ./setup/vmazupraplx6452
+      dockerfile: Dockerfile
+    container_name: vmazupraplx6452
+    hostname: vmazupraplx6452
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.108
+    ports:
+      - "8552:8545"   # RPC HTTP
+      - "30310:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx6452/config:/opt/besu/config
+      - ./setup/vmazupraplx6452/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.108
+      - NODE_TYPE=validator
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+    depends_on:
+      - vmazuprapix4156
+
+  # Validador 2 - vmazupraplx8278
+  vmazupraplx8278:
+    build:
+      context: ./setup/vmazupraplx8278
+      dockerfile: Dockerfile
+    container_name: vmazupraplx8278
+    hostname: vmazupraplx8278
+    networks:
+      besu_network:
+        ipv4_address: 172.23.105.107
+    ports:
+      - "8553:8545"   # RPC HTTP
+      - "30311:30303" # P2P
+    volumes:
+      - ./setup/vmazupraplx8278/config:/opt/besu/config
+      - ./setup/vmazupraplx8278/config/data:/opt/besu/config/data
+    environment:
+      - VM_IP=172.23.105.107
+      - NODE_TYPE=validator
+    restart: unless-stopped
+    entrypoint: ["bash", "/opt/besu/run/start_node.sh"]
+    depends_on:
+      - vmazuprapix4156
+
+networks:
+  besu_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.23.105.0/24
+          gateway: 172.23.105.1
