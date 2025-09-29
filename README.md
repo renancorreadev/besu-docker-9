@@ -179,3 +179,11 @@ Para problemas ou dúvidas, verifique:
 2. Configurações de rede
 3. Arquivos de permissões
 4. Conectividade entre containers
+
+
+Maquinas fora
+
+vmazupraplx2694
+vmazupraplx6452
+vmazupraplx4002
+vmazupraplx8934
