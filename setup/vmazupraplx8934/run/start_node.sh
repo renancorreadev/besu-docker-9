@@ -5,7 +5,7 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-VM_IP="172.23.105.110"
+VM_IP="172.23.105.120"
 
 # Verificar se estamos no diretório padrão ou no projeto
 if [[ "$SCRIPT_DIR" == "/opt/idbra/bradesco_besu_network"* ]]; then

@@ -125,7 +125,7 @@ services:
     hostname: vmazupraplx8934
     networks:
       besu_network:
-        ipv4_address: 172.23.105.110
+        ipv4_address: 172.23.105.120
     ports:
       - "8550:8545"   # RPC HTTP
       - "30308:30303" # P2P
